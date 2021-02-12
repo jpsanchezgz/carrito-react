@@ -54,6 +54,18 @@ class App extends Component {
   }
 
   render(){
+    // let listToPrint = switch (key) {
+    //   case value:
+        
+    //     break;
+
+    //   case value:
+        
+    //     break;
+    
+    //   default:
+    //     break;
+    // }
     return(
       <div className="container-fluid all">
         <div className="row">
@@ -73,7 +85,7 @@ class App extends Component {
               </div>
               <div className="col d-flex justify-content-around">
                 <List 
-                listHandler= { this.state.priceList ? this.state.priceList : this.state.productsList }
+                listHandler= { this.state.priceList.length ? this.state.priceList : this.state.productsList }
                 />
               </div>
             </div>
