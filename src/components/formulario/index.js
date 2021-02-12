@@ -31,7 +31,7 @@ class ProductForm extends Component {
                 <FormGroup>
                         <Label className="mr-3">Selecciona una categoría</Label>
                         <select name="category" id="" onChange={this.createProductHandler}>
-                            <option value="electronico">Electrónico</option>
+                            <option value="electronicos">Electrónico</option>
                             <option value="cocina">Cocina</option>
                             <option value="casa">Casa</option>
                         </select>

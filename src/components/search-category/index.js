@@ -1,6 +1,6 @@
 
 
-function searchCategory () {
+function searchCategory ( props ) {
     return(
         <>
         <h2>Busca por categoría</h2>
@@ -8,9 +8,9 @@ function searchCategory () {
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Categorías</label>
             </div>
-            <select class="custom-select" id="inputGroupSelect01">
+            <select class="custom-select" id="inputGroupSelect01" onChange={ props.listToFilterByPrice}>
                 <option selected>Choose...</option>
-                <option value="electronico">Electrónico</option>
+                <option value="electronicos">Electrónico</option>
                 <option value="cocina">Cocina</option>
                 <option value="casa">Casa</option>
             </select>

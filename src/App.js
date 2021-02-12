@@ -13,19 +13,19 @@ class App extends Component {
       productsList: [
         {
           name: "Producto1",
-          category: "Electronicos",
+          category: "electronicos",
           price: 1000,
           picUrl: "https://picsum.photos/200/300"
         },
         {
           name: "Producto 2",
-          category: "Electronicos",
+          category: "cocina",
           price: 50,
           picUrl: "https://picsum.photos/200/300"
         },
         {
           name: "Producto 4",
-          category: "Electronicos",
+          category: "casa",
           price: 10000,
           picUrl: "https://picsum.photos/200/300"
         },
@@ -35,6 +35,7 @@ class App extends Component {
     }
     this.saveNewProductHandler = this.saveNewProductHandler.bind( this )
     this.filterByPriceHandler = this.filterByPriceHandler.bind (this)
+    this.filterByCategoryHandler = this.filterByCategoryHandler.bind (this)
   }
 
   saveNewProductHandler ( product ) {
@@ -50,6 +51,17 @@ class App extends Component {
     })
 
     this.setState({ priceList: filteredList })
+
+  }
+
+  filterByCategoryHandler ( event ) {
+    let categoryToFilter = event.target.value
+    let filteredListB = this.state.productsList.filter(item => {
+      return categoryToFilter === item.category ? item : null
+       
+    })
+
+    this.setState({ categoryList: filteredListB })
 
   }
 
@@ -80,12 +92,12 @@ class App extends Component {
             </div>
             <div className="row">
               <div className="col-12">
-                <SearchCat />
+                <SearchCat listToFilterByPrice={this.filterByCategoryHandler}/>
                 <SearchPrice listToFilterByPrice={this.filterByPriceHandler} />
               </div>
               <div className="col d-flex justify-content-around">
                 <List 
-                listHandler= { this.state.priceList.length ? this.state.priceList : this.state.productsList }
+                listHandler= { this.state.categoryList.length ? this.state.categoryList : this.state.productsList }
                 />
               </div>
             </div>
