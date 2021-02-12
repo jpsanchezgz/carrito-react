@@ -3,6 +3,8 @@ import './App.css';
 import React, { Component } from 'react'
 import Form from './components/formulario/index'
 import List from './components/products-list/index'
+import SearchCat from './components/search-category/index'
+import SearchPrice from './components/search-price/index'
 
 class App extends Component {
   constructor( props ){
@@ -18,23 +20,37 @@ class App extends Component {
         {
           name: "Producto 2",
           category: "Electronicos",
-          price: 1000,
+          price: 50,
           picUrl: "https://picsum.photos/200/300"
         },
         {
           name: "Producto 4",
           category: "Electronicos",
-          price: 1000,
+          price: 10000,
           picUrl: "https://picsum.photos/200/300"
         },
-      ]
+      ],
+      priceList: [],
+      categoryList: [],
     }
     this.saveNewProductHandler = this.saveNewProductHandler.bind( this )
+    this.filterByPriceHandler = this.filterByPriceHandler.bind (this)
   }
 
   saveNewProductHandler ( product ) {
 
     this.setState({ productsList: [...this.state.productsList, product]})
+  }
+
+  filterByPriceHandler ( event ) {
+    let priceToFilter = event.target.value
+    let filteredList = this.state.productsList.filter(item => {
+      return priceToFilter >= item.price ? item : null
+       
+    })
+
+    this.setState({ priceList: filteredList })
+
   }
 
   render(){
@@ -51,9 +67,13 @@ class App extends Component {
               </div>
             </div>
             <div className="row">
+              <div className="col-12">
+                <SearchCat />
+                <SearchPrice listToFilterByPrice={this.filterByPriceHandler} />
+              </div>
               <div className="col d-flex justify-content-around">
                 <List 
-                listHandler= { this.state.productsList }
+                listHandler= { this.state.priceList ? this.state.priceList : this.state.productsList }
                 />
               </div>
             </div>
