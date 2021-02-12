@@ -1,25 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import React, { Component } from 'react'
+import Form from './components/formulario/index'
+import List from './components/products-list/index'
+
+class App extends Component {
+  constructor( props ){
+    super( props )
+    this.state = {
+      productsList: [
+        {
+          name: "Producto1",
+          category: "Electronicos",
+          price: 1000,
+          picUrl: "https://picsum.photos/200/300"
+        },
+        {
+          name: "Producto 2",
+          category: "Electronicos",
+          price: 1000,
+          picUrl: "https://picsum.photos/200/300"
+        },
+        {
+          name: "Producto 4",
+          category: "Electronicos",
+          price: 1000,
+          picUrl: "https://picsum.photos/200/300"
+        },
+      ]
+    }
+    this.saveNewProductHandler = this.saveNewProductHandler.bind( this )
+  }
+
+  saveNewProductHandler ( product ) {
+
+    this.setState({ productsList: [...this.state.productsList, product]})
+  }
+
+  render(){
+    return(
+      <div className="container-fluid all">
+        <div className="row">
+          <div className="container wrapper rounded">
+            <div className="row">
+              <div className="col">
+                <h1>Bienvenido al Carrito</h1>
+                <Form 
+                saveHandler={this.saveNewProductHandler}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col d-flex justify-content-around">
+                <List 
+                listHandler= { this.state.productsList }
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App;

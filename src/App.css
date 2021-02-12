@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.all {
+  background-color: #282c34;
+  color: whitesmoke;
+  font-family: 'Pangolin', cursive;
+}
+
+.wrapper {
+  background-color: grey;
+}
+
+.my-form {
+  width: 50%;
+  margin: auto;
+}
+
+.my-card {
+  width: 20%;
+}
+
+.my-card-body {
+  background-color: #282c34;
+
+
 }
